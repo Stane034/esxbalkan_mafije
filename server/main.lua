@@ -100,11 +100,17 @@ end)
 RegisterNetEvent('esxbalkan_mafije:vuci')
 AddEventHandler('esxbalkan_mafije:vuci', function(target)
 	local xPlayer = ESX.GetPlayerFromId(source)
-	if xPlayer.job.name == 'ballas' or xPlayer.job.name == 'camorra' or xPlayer.job.name == 'favela' or xPlayer.job.name == 'gsf' or xPlayer.job.name == 'juzniv' or xPlayer.job.name == 'lazarevacki' or xPlayer.job.name == 'lcn' or xPlayer.job.name == 'ludisrbi' or xPlayer.job.name == 'peaky' or xPlayer.job.name == 'stikla' or xPlayer.job.name == 'vagos' or xPlayer.job.name == 'yakuza' or xPlayer.job.name == 'zemunski' then
+	local firstplayer = GetPlayerPed(source)
+	local secondplayer = GetPlayerPed(target)
+	local firstcoords = GetEntityCoords(firstplayer, 0)
+	local secondcoords = GetEntityCoords(secondplayer, 0)
+	local distance = #(firstcoords - secondcords)
+	   if distance <= 15 then
 		TriggerClientEvent('esxbalkan_mafije:vuci', target, source)
-	else
+	   else
 		DropPlayer(source, 'Zasto pokusavas da citujes. Nije lepo to :)')
-	end
+		CancelEvent()
+	   end
 end)
 
 RegisterNetEvent('esxbalkan_mafije:staviUVozilo')
